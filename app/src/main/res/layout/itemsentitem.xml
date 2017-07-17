@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:elevation="100dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="7dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Iron Rod"
+                android:id="@+id/itemsentitem_itemname"
+                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2072-12-03"
+                android:id="@+id/itemsentitem_date"
+                android:layout_alignParentRight="true"
+                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Qty Sent : "
+                android:textStyle="bold"
+                android:id="@+id/itemsentitem_qtysentlabel"
+                android:layout_below="@+id/itemsentitem_itemname"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:layout_toRightOf="@+id/itemsentitem_qtysentlabel"
+                android:id="@+id/itemsentitem_qtysent"
+                android:layout_below="@+id/itemsentitem_itemname"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Qty Received : "
+                android:textStyle="bold"
+                android:id="@+id/itemsentitem_qtyreceivedlabel"
+                android:layout_below="@+id/itemsentitem_date"
+                android:layout_toLeftOf="@+id/itemsentitem_qtyreceived"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:layout_alignParentRight="true"
+                android:id="@+id/itemsentitem_qtyreceived"
+                android:layout_below="@+id/itemsentitem_date"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Challani No. : "
+                android:textStyle="bold"
+                android:id="@+id/itemsentitem_challanilabel"
+                android:layout_below="@+id/itemsentitem_qtysentlabel"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:layout_toRightOf="@+id/itemsentitem_challanilabel"
+                android:id="@+id/itemsentitem_challani"
+                android:layout_below="@+id/itemsentitem_qtysent"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:text="Item Sent"
+                android:background="@color/requestApproved"
+                android:textColor="@color/pureWhite"
+                android:textSize="13sp"
+                android:clickable="true"
+                android:layout_alignParentRight="true"
+                android:id="@+id/itemsentitem_status"
+                android:layout_below="@+id/itemsentitem_qtyreceived"
+                android:layout_marginTop="7dp"
+                />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

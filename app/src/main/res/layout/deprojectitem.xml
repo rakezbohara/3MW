@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:elevation="100dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="7dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mardi Khola Hydrapower"
+                android:id="@+id/deprojectitem_projectname"
+                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Active"
+                android:elevation="7dp"
+                android:id="@+id/deprojectitem_status"
+                android:background="@color/button"
+                android:textColor="@color/pureWhite"
+                android:layout_alignParentRight="true"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Manager : "
+                android:textStyle="bold"
+                android:id="@+id/deprojectitem_designerlabel"
+                android:layout_below="@+id/deprojectitem_projectname"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ram Hari Acharya"
+                android:layout_toRightOf="@+id/deprojectitem_designerlabel"
+                android:id="@+id/deprojectitem_designername"
+                android:layout_below="@+id/deprojectitem_projectname"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start Date : "
+                android:textStyle="bold"
+                android:id="@+id/deprojectitem_startdatelabel"
+                android:layout_below="@+id/deprojectitem_designerlabel"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2072-12-03"
+                android:layout_toRightOf="@+id/deprojectitem_startdatelabel"
+                android:id="@+id/deprojectitem_startdate"
+                android:layout_below="@+id/deprojectitem_designername"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="End Date : "
+                android:textStyle="bold"
+                android:id="@+id/deprojectitem_enddatelabel"
+                android:layout_below="@+id/deprojectitem_startdatelabel"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2072-12-03"
+                android:layout_toRightOf="@+id/deprojectitem_enddatelabel"
+                android:id="@+id/deprojectitem_enddate"
+                android:layout_below="@+id/deprojectitem_startdate"
+                android:layout_marginTop="7dp"
+                />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

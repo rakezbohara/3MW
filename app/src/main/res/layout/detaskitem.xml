@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:elevation="100dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="7dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mardi Khola Hydrapower"
+                android:id="@+id/de_taskname"
+                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Requirement : "
+                android:textStyle="bold"
+                android:id="@+id/de_totalRequirementlabel"
+                android:layout_below="@+id/de_taskname"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="230"
+                android:layout_toRightOf="@+id/de_totalRequirementlabel"
+                android:id="@+id/de_totalRequirement"
+                android:layout_below="@+id/de_taskname"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Weight : "
+                android:textStyle="bold"
+                android:id="@+id/de_weightlabel"
+                android:layout_below="@+id/de_totalRequirementlabel"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12"
+                android:layout_toRightOf="@+id/de_weightlabel"
+                android:id="@+id/de_weight"
+                android:layout_below="@+id/de_totalRequirement"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Unit : "
+                android:textStyle="bold"
+                android:id="@+id/de_unitabel"
+                android:layout_toLeftOf="@+id/de_unit"
+                android:layout_below="@+id/de_totalRequirementlabel"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="23"
+                android:id="@+id/de_unit"
+                android:layout_below="@+id/de_totalRequirement"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="20dp"
+                />
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/de_enter"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_below="@+id/de_unit"
+                android:layout_marginBottom="14dp"
+                android:background="@color/button"
+                android:textColor="@color/pureWhite"
+                android:padding="12dp"
+                android:text="Enter Weight"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:elevation="100dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="7dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Mar 13, 2017"
+                android:id="@+id/taskdetailitem_date"
+                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fabrication : "
+                android:textStyle="bold"
+                android:id="@+id/taskdetailitem_fabricationlabel"
+                android:layout_below="@+id/taskdetailitem_date"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="230"
+                android:layout_toRightOf="@+id/taskdetailitem_fabricationlabel"
+                android:id="@+id/taskdetailitem_fabrication"
+                android:layout_below="@+id/taskdetailitem_date"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="C. Fabrication : "
+                android:textStyle="bold"
+                android:id="@+id/taskdetailitem_cfabricationlabel"
+                android:layout_toLeftOf="@+id/taskdetailitem_cfabrication"
+                android:layout_below="@+id/taskdetailitem_date"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="23"
+                android:id="@+id/taskdetailitem_cfabrication"
+                android:layout_below="@+id/taskdetailitem_date"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="20dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Erection : "
+                android:textStyle="bold"
+                android:id="@+id/taskdetailitem_erectionlabel"
+                android:layout_below="@+id/taskdetailitem_fabricationlabel"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12"
+                android:layout_toRightOf="@+id/taskdetailitem_erectionlabel"
+                android:id="@+id/taskdetailitem_erection"
+                android:layout_below="@+id/taskdetailitem_fabrication"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="C. Erection : "
+                android:textStyle="bold"
+                android:id="@+id/taskdetailitem_cerectionlabel"
+                android:layout_toLeftOf="@+id/taskdetailitem_cerection"
+                android:layout_below="@+id/taskdetailitem_cfabricationlabel"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="23"
+                android:id="@+id/taskdetailitem_cerection"
+                android:layout_below="@+id/taskdetailitem_cfabrication"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="20dp"
+                />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

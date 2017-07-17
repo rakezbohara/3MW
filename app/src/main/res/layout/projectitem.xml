@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:elevation="100dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="7dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mardi Khola Hydrapower"
+                android:id="@+id/projectname"
+                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Active"
+                android:elevation="7dp"
+                android:id="@+id/status"
+                android:background="@color/button"
+                android:textColor="@color/pureWhite"
+                android:layout_alignParentRight="true"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Designer : "
+                android:textStyle="bold"
+                android:id="@+id/designerlabel"
+                android:layout_below="@+id/projectname"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ram Hari Acharya"
+                android:layout_toRightOf="@+id/designerlabel"
+                android:id="@+id/designername"
+                android:layout_below="@+id/projectname"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start Date : "
+                android:textStyle="bold"
+                android:id="@+id/startdatelabel"
+                android:layout_below="@+id/designerlabel"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2072-12-03"
+                android:layout_toRightOf="@+id/startdatelabel"
+                android:id="@+id/startdate"
+                android:layout_below="@+id/designername"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="End Date : "
+                android:textStyle="bold"
+                android:id="@+id/enddatelabel"
+                android:layout_below="@+id/startdatelabel"
+                android:layout_marginTop="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2072-12-03"
+                android:layout_toRightOf="@+id/enddatelabel"
+                android:id="@+id/enddate"
+                android:layout_below="@+id/startdate"
+                android:layout_marginTop="7dp"
+                />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+</RelativeLayout>
