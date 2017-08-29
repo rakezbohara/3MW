@@ -26,6 +26,9 @@ import android.widget.TextView;
 import com.app.rakez.a3mw.MainActivity;
 import com.app.rakez.a3mw.datastore.AddStockOut;
 import com.app.rakez.a3mw.datastore.AddTaskRecord;
+import com.app.rakez.a3mw.datastore.DeInput;
+import com.app.rakez.a3mw.datastore.DeSubTask;
+import com.app.rakez.a3mw.datastore.Item;
 import com.app.rakez.a3mw.datastore.ItemReceivedReq;
 import com.app.rakez.a3mw.datastore.ItemReceivedSent;
 import com.app.rakez.a3mw.datastore.NewStockRequest;
@@ -187,8 +190,11 @@ public class StockProjects extends AppCompatActivity implements NavigationView.O
         //clear all table
         AddStockOut.deleteAll(AddStockOut.class);
         AddTaskRecord.deleteAll(AddTaskRecord.class);
-        ItemReceivedReq.deleteAll(ItemReceivedReq.class);
+        DeInput.deleteAll(DeInput.class);
+        DeSubTask.deleteAll(DeSubTask.class);
+        Item.deleteAll(Item.class);
         ItemReceivedSent.deleteAll(ItemReceivedSent.class);
+        ItemReceivedReq.deleteAll(ItemReceivedReq.class);
         NewStockRequest.deleteAll(NewStockRequest.class);
         Project.deleteAll(Project.class);
         StockIn.deleteAll(StockIn.class);

@@ -13,8 +13,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -46,6 +49,11 @@ public class MainActivity extends AppCompatActivity {
     EditText _passwordText;
     Button _loginButton;
     ProgressDialog pDialog;
+    //ImageView animM1, animM2, animM3, animW1;
+    ProgressDialog progressDialog;
+    //Animation animFadeIn1,animFadeIn2,animFadeIn3;
+    //Animation animationM1, animationM2, animationM3, animationW1;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,11 +71,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent in = new Intent(MainActivity.this, Projects.class);
                 startActivity(in);
                 finish();
+            }else{
+
             }
         }
-        _emailText = (EditText) findViewById(R.id.input_email);
-        _passwordText = (EditText) findViewById(R.id.input_password);
-        _loginButton = (Button) findViewById(R.id.btn_login);
+            initialize();
 
 
         _loginButton.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +93,31 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    public void initialize(){
+        _emailText = (EditText) findViewById(R.id.input_email);
+        _passwordText = (EditText) findViewById(R.id.input_password);
+        _loginButton = (Button) findViewById(R.id.btn_login);
+        /*animM1 = (ImageView) findViewById(R.id.m1);
+        animM2 = (ImageView) findViewById(R.id.m2);
+        animM3 = (ImageView) findViewById(R.id.m3);
+        animW1 = (ImageView) findViewById(R.id.w);
+
+
+        animFadeIn1 = AnimationUtils.loadAnimation(this,R.anim.fade_in);
+        animFadeIn2 = AnimationUtils.loadAnimation(this,R.anim.fade_in2);
+        animFadeIn3 = AnimationUtils.loadAnimation(this,R.anim.fade_in3);
+        animationM1 = AnimationUtils.loadAnimation(this,R.anim.m1_effect);
+        animationM2 = AnimationUtils.loadAnimation(this,R.anim.m2_effect);
+        animationM3 = AnimationUtils.loadAnimation(this,R.anim.m3_effect);
+        animationW1 = AnimationUtils.loadAnimation(this,R.anim.w_effect);
+        _emailText.startAnimation(animFadeIn1);
+        _passwordText.startAnimation(animFadeIn2);
+        _loginButton.startAnimation(animFadeIn3);
+        animM1.startAnimation(animationM1);
+        animM2.startAnimation(animationM2);
+        animM3.startAnimation(animationM3);
+        animW1.startAnimation(animationW1);*/
+    }
 
     public void login() throws JSONException {
         Log.d(TAG, "Login");
@@ -94,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        _loginButton.setEnabled(false);
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
         attempLogin(email,password);
@@ -111,13 +143,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onLoginSuccess() {
-        doRefresh();
+        pDialog.dismiss();
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("userinfo", 0);
+        String position = pref.getString("role", "");
+        if(position.equals("design_section") || position.equals("production")){
+            doRefresh();
+        }else{
+
+        }
+
     }
 
     public void onLoginFailed() {
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
-
-        _loginButton.setEnabled(true);
     }
 
     public boolean validate() {
@@ -126,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
-        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (email.isEmpty()) {
             _emailText.setError("enter a valid email address");
             valid = false;
         } else {
@@ -205,13 +243,17 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, DataExchange.class);
         Log.d("Service Log","onActivity Called");
         startService(intent);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Under Sync");
+        progressDialog.setMessage("Please Wait!!! Data is being Updated");
+        progressDialog.show();
         Log.d("Service Log","onActivity2 Called");
     }
 
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            pDialog.dismiss();
+            progressDialog.dismiss();
             SharedPreferences pref = getApplicationContext().getSharedPreferences("userinfo", 0);
             String position = pref.getString("role", "");
             if(position.equals("design_section")){

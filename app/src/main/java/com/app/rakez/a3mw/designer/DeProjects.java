@@ -18,7 +18,22 @@ import android.view.MenuItem;
 
 import com.app.rakez.a3mw.MainActivity;
 import com.app.rakez.a3mw.R;
+import com.app.rakez.a3mw.datastore.AddStockOut;
+import com.app.rakez.a3mw.datastore.AddTaskRecord;
+import com.app.rakez.a3mw.datastore.DeInput;
+import com.app.rakez.a3mw.datastore.DeSubTask;
+import com.app.rakez.a3mw.datastore.Item;
+import com.app.rakez.a3mw.datastore.ItemReceivedReq;
+import com.app.rakez.a3mw.datastore.ItemReceivedSent;
+import com.app.rakez.a3mw.datastore.NewStockRequest;
 import com.app.rakez.a3mw.datastore.Project;
+import com.app.rakez.a3mw.datastore.StockIn;
+import com.app.rakez.a3mw.datastore.StockItemStatusReq;
+import com.app.rakez.a3mw.datastore.StockItemStatusSent;
+import com.app.rakez.a3mw.datastore.StockOut;
+import com.app.rakez.a3mw.datastore.StockProject;
+import com.app.rakez.a3mw.datastore.SubTask;
+import com.app.rakez.a3mw.datastore.TaskRecord;
 import com.app.rakez.a3mw.projects.ProjectItem;
 import com.app.rakez.a3mw.services.DataExchange;
 
@@ -82,7 +97,7 @@ public class DeProjects extends AppCompatActivity {
             SharedPreferences.Editor editor = pref.edit();
             editor.clear();
             editor.commit();
-            //refreshDB();
+            refreshDB();
             Intent in = new Intent(this, MainActivity.class);
             startActivity(in);
             finish();
@@ -91,7 +106,25 @@ public class DeProjects extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    private void refreshDB() {
+        //clear all table
+        AddStockOut.deleteAll(AddStockOut.class);
+        AddTaskRecord.deleteAll(AddTaskRecord.class);
+        DeInput.deleteAll(DeInput.class);
+        DeSubTask.deleteAll(DeSubTask.class);
+        Item.deleteAll(Item.class);
+        ItemReceivedSent.deleteAll(ItemReceivedSent.class);
+        ItemReceivedReq.deleteAll(ItemReceivedReq.class);
+        NewStockRequest.deleteAll(NewStockRequest.class);
+        Project.deleteAll(Project.class);
+        StockIn.deleteAll(StockIn.class);
+        StockItemStatusReq.deleteAll(StockItemStatusReq.class);
+        StockItemStatusSent.deleteAll(StockItemStatusSent.class);
+        StockOut.deleteAll(StockOut.class);
+        StockProject.deleteAll(StockProject.class);
+        SubTask.deleteAll(SubTask.class);
+        TaskRecord.deleteAll(TaskRecord.class);
+    }
 
     public void doRefresh(){
         Intent intent = new Intent(this, DataExchange.class);

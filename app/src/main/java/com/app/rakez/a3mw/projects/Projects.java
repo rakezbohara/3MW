@@ -28,6 +28,8 @@ import com.app.rakez.a3mw.R;
 import com.app.rakez.a3mw.Stock.StockProjects;
 import com.app.rakez.a3mw.datastore.AddStockOut;
 import com.app.rakez.a3mw.datastore.AddTaskRecord;
+import com.app.rakez.a3mw.datastore.DeInput;
+import com.app.rakez.a3mw.datastore.DeSubTask;
 import com.app.rakez.a3mw.datastore.Item;
 import com.app.rakez.a3mw.datastore.ItemReceivedReq;
 import com.app.rakez.a3mw.datastore.ItemReceivedSent;
@@ -162,8 +164,11 @@ public class Projects extends AppCompatActivity implements NavigationView.OnNavi
         //clear all table
         AddStockOut.deleteAll(AddStockOut.class);
         AddTaskRecord.deleteAll(AddTaskRecord.class);
-        ItemReceivedReq.deleteAll(ItemReceivedReq.class);
+        DeInput.deleteAll(DeInput.class);
+        DeSubTask.deleteAll(DeSubTask.class);
+        Item.deleteAll(Item.class);
         ItemReceivedSent.deleteAll(ItemReceivedSent.class);
+        ItemReceivedReq.deleteAll(ItemReceivedReq.class);
         NewStockRequest.deleteAll(NewStockRequest.class);
         Project.deleteAll(Project.class);
         StockIn.deleteAll(StockIn.class);

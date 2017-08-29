@@ -21,6 +21,7 @@ import com.app.rakez.a3mw.R;
 import com.app.rakez.a3mw.datastore.AddStockOut;
 import com.app.rakez.a3mw.datastore.AddTaskRecord;
 import com.app.rakez.a3mw.datastore.Constants;
+import com.app.rakez.a3mw.datastore.DeInput;
 import com.app.rakez.a3mw.datastore.DeSubTask;
 import com.app.rakez.a3mw.datastore.Item;
 import com.app.rakez.a3mw.datastore.ItemReceivedReq;
@@ -34,6 +35,7 @@ import com.app.rakez.a3mw.datastore.StockOut;
 import com.app.rakez.a3mw.datastore.StockProject;
 import com.app.rakez.a3mw.datastore.SubTask;
 import com.app.rakez.a3mw.datastore.TaskRecord;
+import com.app.rakez.a3mw.designer.DeProjects;
 import com.app.rakez.a3mw.projects.Projects;
 
 import org.json.JSONArray;
@@ -94,14 +96,69 @@ public class DataExchange extends Service {
     private void receiveDate() {
         String role = pref.getString("role", "");
         if(role.equals("design_section")){
-            deFetchData();
+            dePostInput();
         }else if(role.equals("production")){
             postTaskRecord();
         }
 
     }
 
-    private void deFetchData() {
+    private void dePostInput(){
+        List<DeInput> deInputs = DeInput.listAll(DeInput.class);
+        int len = deInputs.size();
+        for(int i = len; i > 0; i--){
+            if(i==1){
+                terminate = true;
+            }
+            final DeInput deInput = deInputs.get(i-1);
+            JSONObject params = new JSONObject();
+            try {
+                params.put("user_id", deInput.getUserId());
+                params.put("token", deInput.getToken());
+                params.put("s_id", deInput.getsId());
+                params.put("weight", deInput.getWeight());
+                params.put("unit", deInput.getUnit());
+            } catch (JSONException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            JsonObjectRequest jsonArrReq = new JsonObjectRequest(Request.Method.POST, Constants.BASE_URL+Constants.POSTDESIGNERINPUT_URL,params, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Log.d(TAG,"addtaskrecord" +response.toString());
+                    try {
+                        JSONObject itemsJSON =response;
+                        if(itemsJSON.getString("status").equals("empty")){
+
+                        }else if (itemsJSON.getString("status").equals("token_mismatch")){
+                            Log.d("TAG","Token Mismatch Matched");
+                            clearSession();
+                        }else if(itemsJSON.getString("status").equals("success")){
+                            deInput.delete();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    if(terminate){
+                        terminate = false;
+                        deProjects();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.d(TAG, "Error: " + error.getMessage());
+                    stopSelf();
+                }
+            });
+            AppController.getInstance().addToRequestQueue(jsonArrReq);
+
+        }
+        deProjects();
+
+    }
+
+    private void deProjects() {
 
         JsonArrayRequest jsonArrReq = new JsonArrayRequest(Request.Method.POST, Constants.BASE_URL+Constants.PROJECTS_URL,new JSONObject(params) , new Response.Listener<JSONArray>() {
             @Override
@@ -197,6 +254,8 @@ public class DataExchange extends Service {
         };
         AppController.getInstance().addToRequestQueue(jsonArrReq);
     }
+
+
 
     private void postTaskRecord(){
         List<AddTaskRecord> addTaskRecords = AddTaskRecord.listAll(AddTaskRecord.class);
@@ -906,10 +965,16 @@ public class DataExchange extends Service {
     }
 
     private void notifyUser(int i) {
+        String role = pref.getString("role", "");
+        Intent rIntent;
+        if(role.equals("design_section")){
+            rIntent = new Intent(this, DeProjects.class);
+        }else{
+            rIntent = new Intent(this, Projects.class);
+        }
         if(i==1){
             Log.d("Notification","Project notify is called");
-            Intent intent = new Intent(this, Projects.class);
-            PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, 0);
+            PendingIntent pIntent = PendingIntent.getActivity(this, 0, rIntent, 0);
             Notification n  = new Notification.Builder(this)
                     .setContentTitle("New Project Has Been Assigned")
                     .setContentText("New Project")
@@ -924,8 +989,7 @@ public class DataExchange extends Service {
             notificationManager.notify(0, n);
         }else if(i==2){
             Log.d("Notification","Task notify is called");
-            Intent intent = new Intent(this, Project.class);
-            PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+            PendingIntent pIntent = PendingIntent.getActivity(this, 0, rIntent, PendingIntent.FLAG_ONE_SHOT);
             Notification n  = new Notification.Builder(this)
                     .setContentTitle("New Task Has Been Assigned")
                     .setContentText("New Task")
@@ -946,8 +1010,11 @@ public class DataExchange extends Service {
         //clear all table
         AddStockOut.deleteAll(AddStockOut.class);
         AddTaskRecord.deleteAll(AddTaskRecord.class);
-        ItemReceivedReq.deleteAll(ItemReceivedReq.class);
+        DeInput.deleteAll(DeInput.class);
+        DeSubTask.deleteAll(DeSubTask.class);
+        Item.deleteAll(Item.class);
         ItemReceivedSent.deleteAll(ItemReceivedSent.class);
+        ItemReceivedReq.deleteAll(ItemReceivedReq.class);
         NewStockRequest.deleteAll(NewStockRequest.class);
         Project.deleteAll(Project.class);
         StockIn.deleteAll(StockIn.class);

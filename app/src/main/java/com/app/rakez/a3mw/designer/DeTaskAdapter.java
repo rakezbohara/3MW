@@ -1,14 +1,18 @@
 package com.app.rakez.a3mw.designer;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import com.app.rakez.a3mw.R;
+import com.app.rakez.a3mw.datastore.DeInput;
 
 import java.util.List;
 
@@ -48,7 +52,36 @@ public class DeTaskAdapter extends RecyclerView.Adapter<DeTaskAdapter.MyViewHold
         holder.enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                // custom dialog
+                final Dialog dialog = new Dialog(mContext);
+                dialog.setContentView(R.layout.de_dialog_weight_unit);
+                final EditText eWeight = (EditText) dialog.findViewById(R.id.de_dialog_weight);
+                final EditText eUnit = (EditText) dialog.findViewById(R.id.de_dialog_unit);
+                if(projectItem.getWeight()!=null && projectItem.getUnit()!=null){
+                    eWeight.setText(projectItem.getWeight());
+                    eUnit.setText(projectItem.getUnit());
+                }
+                Button nsave = (Button) dialog.findViewById(R.id.de_dialog_add);
+                dialog.setTitle("New Data");
+                dialog.show();
+                nsave.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String weight = eWeight.getText().toString();
+                        String unit = eUnit.getText().toString();
+                        if(weight.equals("") || unit.equals("")){
+                            eWeight.setError("Required");
+                            eUnit.setError("Required");
+                        }else{
+                            SharedPreferences pref = mContext.getSharedPreferences("userinfo", 0);
+                            String userId = pref.getString("id", "");
+                            String token = pref.getString("token", "");
+                            DeInput deInput = new DeInput(userId,token,projectItem.gettId(),weight,unit);
+                            deInput.save();
+                            dialog.dismiss();
+                        }
+                    }
+                });
             }
         });
     }

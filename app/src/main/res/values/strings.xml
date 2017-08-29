@@ -10,4 +10,21 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Machhapuchhre Metal &amp; Machinery Works</string>
+    <string name="slide_1_desc">Almost good is not good enough.</string>
+
+    <string name="slide_2_title">DESIGN &amp; FABRICATION</string>
+    <string name="slide_2_desc">Design and fabrication of metal structure tailored to your needs</string>
+
+    <string name="slide_3_title">HYDRO-MECHANICAL SERVICES</string>
+    <string name="slide_3_desc">Penstock pipe, Hydraulic gate and other components of hydropower at single shop.</string>
+
+    <string name="slide_4_title">Wanna know more?</string>
+    <string name="slide_4_desc">Get to know more about us.</string>
 </resources>

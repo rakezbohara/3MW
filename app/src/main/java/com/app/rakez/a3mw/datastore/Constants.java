@@ -23,5 +23,6 @@ public class Constants {
     static public String ITEMRECEIVEDREQ_URL = "/api/itemreceivedreq";
     static public String ITEMRECEIVEDSENT_URL = "/api/itemreceivedsent";
     static public String ADDSTOCKOUT_URL = "/api/addstockout";
+    static public String POSTDESIGNERINPUT_URL = "/api/designerinput";
 
 }
