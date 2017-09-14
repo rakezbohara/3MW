@@ -65,7 +65,7 @@ public class DeProjects extends AppCompatActivity {
         projectList.clear();
         for(int i =0 ; i< loadProject.size();i++){
             Project p = loadProject.get(i);
-            projectList.add(new ProjectItem(p.getProjectName(),p.getpId(),p.getStatus(),p.getDesigner(),p.getStartDate(),p.getEndDate()));
+            projectList.add(new ProjectItem(p.getProjectName(),p.getpId(),p.getClientName(),p.getProgressPercentage()));
         }
         pAdapter.notifyDataSetChanged();
     }
@@ -141,7 +141,9 @@ public class DeProjects extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             loadDataToAdapter();
-            progressDialog.dismiss();
+            if(progressDialog.isShowing()){
+                progressDialog.dismiss();
+            }
         }
     };
 

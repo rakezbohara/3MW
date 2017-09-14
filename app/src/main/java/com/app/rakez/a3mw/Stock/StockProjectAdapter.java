@@ -42,11 +42,8 @@ public class StockProjectAdapter extends RecyclerView.Adapter<StockProjectAdapte
     public void onBindViewHolder(MyViewHolder holder, int position) {
         final StockProjectItem stockProjectItem = stockProjectList.get(position);
         holder.projectName.setText(stockProjectItem.getProjectName());
-        holder.status.setText(stockProjectItem.getStatus());
-        holder.designer.setText(stockProjectItem.getDesigner());
-        if(stockProjectItem.getStatus().equals("Inactive")){
-            holder.status.setBackgroundColor(mContext.getResources().getColor(R.color.inactive));
-        }
+        holder.designer.setText(stockProjectItem.getClientName());
+
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

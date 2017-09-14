@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.app.rakez.a3mw.R;
 import com.app.rakez.a3mw.tasks.Tasks;
@@ -38,24 +39,15 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.MyViewHo
     public void onBindViewHolder(MyViewHolder holder, int position) {
         final ProjectItem projectItem = projectList.get(position);
         holder.projectName.setText(projectItem.getProjectName());
-        holder.status.setText(projectItem.getStatus());
-        holder.designer.setText(projectItem.getDesigner());
-        holder.startDate.setText(projectItem.getStartDate());
-        holder.endDate.setText(projectItem.getEndDate());
-        if(projectItem.getStatus().equals("Inactive")){
-            holder.status.setBackgroundColor(mContext.getResources().getColor(R.color.inactive));
-        }
+        holder.designer.setText(projectItem.getClientName());
+        holder.progressPercentage.setText(projectItem.getProgressPercentage()+"%");
+        holder.progressBar.setProgress((int)Float.parseFloat(projectItem.getProgressPercentage()));
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(projectItem.getStatus().equals("Inactive")){
-
-                }else{
                     Intent in = new Intent(mContext, Tasks.class);
                     in.putExtra("P_ID", projectItem.getpId());
                     mContext.startActivity(in);
-                }
-
             }
         });
     }
@@ -70,16 +62,16 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.MyViewHo
         public TextView projectName;
         public TextView status;
         public TextView designer;
-        public TextView startDate;
-        public TextView endDate;
+        public TextView progressPercentage;
+        public ProgressBar progressBar;
         public MyViewHolder(View itemView) {
             super(itemView);
             view = itemView;
             projectName = (TextView) itemView.findViewById(R.id.projectname);
             status = (TextView) itemView.findViewById(R.id.status);
             designer = (TextView) itemView.findViewById(R.id.designername);
-            startDate = (TextView) itemView.findViewById(R.id.startdate);
-            endDate = (TextView) itemView.findViewById(R.id.enddate);
+            progressPercentage = (TextView) itemView.findViewById(R.id.progressPercentage);
+            progressBar = (ProgressBar) itemView.findViewById(R.id.progressBar);
         }
     }
 }

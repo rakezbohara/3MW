@@ -10,6 +10,8 @@ public class DeSubTask extends SugarRecord {
     String tId;
     String pId;
     String job;
+    String diameter;
+    String thickness;
     String total_requirement;
     String unit_weight;
     String unit;
@@ -17,10 +19,12 @@ public class DeSubTask extends SugarRecord {
     public DeSubTask() {
     }
 
-    public DeSubTask(String tId, String pId, String job, String total_requirement, String unit_weight, String unit) {
+    public DeSubTask(String tId, String pId, String job, String diameter, String thickness, String total_requirement, String unit_weight, String unit) {
         this.tId = tId;
         this.pId = pId;
         this.job = job;
+        this.diameter = diameter;
+        this.thickness = thickness;
         this.total_requirement = total_requirement;
         this.unit_weight = unit_weight;
         this.unit = unit;
@@ -36,6 +40,14 @@ public class DeSubTask extends SugarRecord {
 
     public String getJob() {
         return job;
+    }
+
+    public String getDiameter() {
+        return diameter;
+    }
+
+    public String getThickness() {
+        return thickness;
     }
 
     public String getTotal_requirement() {

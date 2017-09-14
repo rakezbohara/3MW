@@ -7,41 +7,45 @@ package com.app.rakez.a3mw.projects;
 public class ProjectItem {
     private String projectName;
     private String pId;
-    private String status;
-    private String designer;
-    private String startDate;
-    private String endDate;
+    private String clientName;
+    private String progressPercentage;
 
-    public ProjectItem(String projectName, String pId, String status, String designer, String startDate, String endDate) {
+    public ProjectItem(String projectName, String pId, String clientName, String progressPercentage) {
         this.projectName = projectName;
         this.pId = pId;
-        this.status = status;
-        this.designer = designer;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.clientName = clientName;
+        this.progressPercentage = progressPercentage;
     }
 
     public String getProjectName() {
         return projectName;
     }
 
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
     public String getpId() {
         return pId;
     }
 
-    public String getStatus() {
-        return status;
+    public void setpId(String pId) {
+        this.pId = pId;
     }
 
-    public String getDesigner() {
-        return designer;
+    public String getClientName() {
+        return clientName;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
     }
 
-    public String getEndDate() {
-        return endDate;
+    public String getProgressPercentage() {
+        return progressPercentage;
+    }
+
+    public void setProgressPercentage(String progressPercentage) {
+        this.progressPercentage = progressPercentage;
     }
 }

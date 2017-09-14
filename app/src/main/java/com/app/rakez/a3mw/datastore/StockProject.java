@@ -9,21 +9,15 @@ import com.orm.SugarRecord;
 public class StockProject extends SugarRecord {
     String pId;
     String projectName;
-    String status;
-    String designer;
-    String startDate;
-    String endDate;
+    String clientName;
 
     public StockProject() {
     }
 
-    public StockProject(String pId, String projectName, String status, String designer, String startDate, String endDate) {
+    public StockProject(String pId, String projectName, String clientName) {
         this.pId = pId;
         this.projectName = projectName;
-        this.status = status;
-        this.designer = designer;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.clientName = clientName;
     }
 
     public String getpId() {
@@ -34,19 +28,7 @@ public class StockProject extends SugarRecord {
         return projectName;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public String getDesigner() {
-        return designer;
-    }
-
-    public String getStartDate() {
-        return startDate;
-    }
-
-    public String getEndDate() {
-        return endDate;
+    public String getClientName() {
+        return clientName;
     }
 }

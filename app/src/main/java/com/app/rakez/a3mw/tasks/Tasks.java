@@ -37,7 +37,7 @@ public class Tasks extends AppCompatActivity {
         List<SubTask> loadTask = SubTask.find(SubTask.class,"p_id=?",pId);
         for(int i =0 ; i< loadTask.size();i++){
             SubTask p = loadTask.get(i);
-            taskList.add(new TaskItem(p.gettId(),p.getJob(),p.getTotal_requirement(),p.getC_fabrication(),p.getC_erection()));
+            taskList.add(new TaskItem(p.gettId(),p.getJob()+"("+p.getDiameter()+" X "+p.getThickness() +")",p.getTotal_requirement(),p.getC_fabrication(),p.getC_erection()));
         }
         tAdapter.notifyDataSetChanged();
     }

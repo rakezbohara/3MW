@@ -7,29 +7,35 @@ package com.app.rakez.a3mw.Stock;
 public class StockProjectItem {
     private String pId;
     private String projectName;
-    private String status;
-    private String designer;
+    private String clientName;
 
-    public StockProjectItem(String pId, String projectName, String status, String designer) {
+    public StockProjectItem(String pId, String projectName, String clientName) {
         this.pId = pId;
         this.projectName = projectName;
-        this.status = status;
-        this.designer = designer;
+        this.clientName = clientName;
     }
 
     public String getpId() {
         return pId;
     }
 
+    public void setpId(String pId) {
+        this.pId = pId;
+    }
+
     public String getProjectName() {
         return projectName;
     }
 
-    public String getStatus() {
-        return status;
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
-    public String getDesigner() {
-        return designer;
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
     }
 }

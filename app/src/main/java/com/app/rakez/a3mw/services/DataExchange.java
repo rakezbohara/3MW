@@ -177,13 +177,7 @@ public class DataExchange extends Service {
                                 Project.deleteAll(Project.class);
                             }
                         }
-                        String active;
-                        if(projects.getString("is_active").equals("1")){
-                            active = "Active";
-                        }else{
-                            active = "Inactive";
-                        }
-                        Project project = new Project(projects.getString("id"),projects.getString("project_name"),active,projects.getString("manager_name"),projects.getString("start_date"),projects.getString("end_date"));
+                        Project project = new Project(projects.getString("id"),projects.getString("project_name"),projects.getString("client_name"),projects.getString("progress"));
                         project.save();
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -230,7 +224,7 @@ public class DataExchange extends Service {
                                 DeSubTask.deleteAll(DeSubTask.class);
                             }
                         }
-                        DeSubTask subTask = new DeSubTask(subTaskitem.getString("id"),subTaskitem.getString("project_id"),subTaskitem.getString("job"),subTaskitem.getString("total_requirement"),subTaskitem.getString("unit_weight"),subTaskitem.getString("unit"));
+                        DeSubTask subTask = new DeSubTask(subTaskitem.getString("id"),subTaskitem.getString("project_id"),subTaskitem.getString("job"),subTaskitem.getString("diameter"),subTaskitem.getString("thickness"),subTaskitem.getString("total_requirement"),subTaskitem.getString("unit_weight"),subTaskitem.getString("unit"));
                         subTask.save();
 
                     } catch (JSONException e) {
@@ -555,13 +549,7 @@ public class DataExchange extends Service {
                                 Project.deleteAll(Project.class);
                             }
                         }
-                        String active;
-                        if(projects.getString("is_active").equals("1")){
-                            active = "Active";
-                        }else{
-                            active = "Inactive";
-                        }
-                        Project project = new Project(projects.getString("id"),projects.getString("project_name"),active,projects.getString("designer_name"),projects.getString("start_date"),projects.getString("end_date"));
+                        Project project = new Project(projects.getString("id"),projects.getString("project_name"),projects.getString("client_name"),projects.getString("progress"));
                         project.save();
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -696,13 +684,7 @@ public class DataExchange extends Service {
                                 StockProject.deleteAll(StockProject.class);
                             }
                         }
-                        String active;
-                        if(stockProjectitem.getString("is_active").equals("1")){
-                            active = "Active";
-                        }else{
-                            active = "Inactive";
-                        }
-                        StockProject stockProject = new StockProject(stockProjectitem.getString("id"),stockProjectitem.getString("project_name"),active,stockProjectitem.getString("designer_name"),stockProjectitem.getString("start_date"),stockProjectitem.getString("end_date"));
+                        StockProject stockProject = new StockProject(stockProjectitem.getString("id"),stockProjectitem.getString("project_name"),stockProjectitem.getString("client_name"));
                         stockProject.save();
                     } catch (JSONException e) {
                         e.printStackTrace();

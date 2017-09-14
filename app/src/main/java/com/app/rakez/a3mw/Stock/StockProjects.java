@@ -91,7 +91,7 @@ public class StockProjects extends AppCompatActivity implements NavigationView.O
         sProjectList.clear();
         for(int i =0 ; i< loadProject.size();i++){
             StockProject p = loadProject.get(i);
-            sProjectList.add(new StockProjectItem(p.getpId(),p.getProjectName(),p.getStatus(),p.getDesigner()));
+            sProjectList.add(new StockProjectItem(p.getpId(),p.getProjectName(),p.getClientName()));
         }
         sProjectAdapter.notifyDataSetChanged();
     }

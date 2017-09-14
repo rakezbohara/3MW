@@ -11,22 +11,18 @@ public class Project extends SugarRecord {
 
     String pId;
     String projectName;
-    String status;
-    String designer;
-    String startDate;
-    String endDate;
+    String clientName;
+    String progressPercentage;
 
     public Project() {
 
     }
 
-    public Project(String pId, String projectName, String status, String designer, String startDate, String endDate) {
+    public Project(String pId, String projectName, String clientName, String progressPercentage) {
         this.pId = pId;
         this.projectName = projectName;
-        this.status = status;
-        this.designer = designer;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.clientName = clientName;
+        this.progressPercentage = progressPercentage;
     }
 
     public String getpId() {
@@ -37,19 +33,11 @@ public class Project extends SugarRecord {
         return projectName;
     }
 
-    public String getStatus() {
-        return status;
+    public String getClientName() {
+        return clientName;
     }
 
-    public String getDesigner() {
-        return designer;
-    }
-
-    public String getStartDate() {
-        return startDate;
-    }
-
-    public String getEndDate() {
-        return endDate;
+    public String getProgressPercentage() {
+        return progressPercentage;
     }
 }

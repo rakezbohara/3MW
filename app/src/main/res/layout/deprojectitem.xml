@@ -36,7 +36,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Manager : "
+                android:text="Client Name : "
                 android:textStyle="bold"
                 android:id="@+id/deprojectitem_designerlabel"
                 android:layout_below="@+id/deprojectitem_projectname"
@@ -54,39 +54,30 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Start Date : "
+                android:text="Progress : "
                 android:textStyle="bold"
-                android:id="@+id/deprojectitem_startdatelabel"
-                android:layout_below="@+id/deprojectitem_designerlabel"
-                android:layout_marginTop="7dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2072-12-03"
-                android:layout_toRightOf="@+id/deprojectitem_startdatelabel"
-                android:id="@+id/deprojectitem_startdate"
+                android:id="@+id/progressLabel"
                 android:layout_below="@+id/deprojectitem_designername"
                 android:layout_marginTop="7dp"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="End Date : "
-                android:textStyle="bold"
-                android:id="@+id/deprojectitem_enddatelabel"
-                android:layout_below="@+id/deprojectitem_startdatelabel"
+                android:text="45%"
+                android:layout_toRightOf="@+id/progressLabel"
+                android:id="@+id/progressPercentage"
+                android:layout_below="@+id/deprojectitem_designername"
                 android:layout_marginTop="7dp"
                 />
-            <TextView
-                android:layout_width="wrap_content"
+            <ProgressBar
+                android:layout_below="@+id/progressPercentage"
+                android:id="@+id/progressBar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="2072-12-03"
-                android:layout_toRightOf="@+id/deprojectitem_enddatelabel"
-                android:id="@+id/deprojectitem_enddate"
-                android:layout_below="@+id/deprojectitem_startdate"
-                android:layout_marginTop="7dp"
-                />
+                android:layout_marginTop="5dp"
+                android:progressDrawable="@drawable/greenprogress"
+                android:progress="50"/>
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>

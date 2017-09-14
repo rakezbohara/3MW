@@ -36,7 +36,7 @@ public class DeTask extends AppCompatActivity {
         taskList.clear();
         for(int i =0 ; i< loadTask.size();i++){
             DeSubTask p = loadTask.get(i);
-            taskList.add(new DeTaskItem(p.gettId(),p.getJob(),p.getTotal_requirement(),p.getUnit_weight(),p.getUnit()));
+            taskList.add(new DeTaskItem(p.gettId(),p.getJob()+"("+p.getDiameter()+" X "+p.getThickness() +")",p.getTotal_requirement(),p.getUnit_weight(),p.getUnit()));
         }
         tAdapter.notifyDataSetChanged();
 
