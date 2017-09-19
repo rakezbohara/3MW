@@ -99,6 +99,8 @@ public class DataExchange extends Service {
             dePostInput();
         }else if(role.equals("production")){
             postTaskRecord();
+        }else{
+            stopSelf();
         }
 
     }

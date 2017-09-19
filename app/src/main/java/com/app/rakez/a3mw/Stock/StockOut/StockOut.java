@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import com.app.rakez.a3mw.R;
+import com.app.rakez.a3mw.datastore.Project;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,9 @@ public class StockOut extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        List<Project> projects = Project.find(Project.class,"p_id=?",pId);
+        Project project = projects.get(0);
+        getSupportActionBar().setTitle(project.getProjectName());
         initialize();
         RecyclerView.LayoutManager rLayoutManager = new LinearLayoutManager(this);
         itemRV.setLayoutManager(rLayoutManager);

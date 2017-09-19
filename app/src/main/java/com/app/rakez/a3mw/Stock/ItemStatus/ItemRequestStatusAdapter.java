@@ -18,6 +18,8 @@ import com.app.rakez.a3mw.datastore.ItemReceivedReq;
 
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 /**
  * Created by RAKEZ on 7/3/2017.
  */
@@ -88,7 +90,18 @@ public class ItemRequestStatusAdapter extends RecyclerView.Adapter<ItemRequestSt
                                 qtyReceived.setError("Required");
                             }else{
                                 ItemReceivedReq itemReceivedReq = new ItemReceivedReq(userId, token, itemRequestStatusItem.getItemId(),pId,quantity,itemRequestStatusItem.getChallaniNo());
-                                itemReceivedReq.save();
+                                long a = itemReceivedReq.save();
+                                if(a!=-1){
+                                    new SweetAlertDialog(mContext, SweetAlertDialog.SUCCESS_TYPE)
+                                            .setTitleText("Success!")
+                                            .setContentText("Data is saved. You can now manually sync!")
+                                            .show();
+                                }else{
+                                    new SweetAlertDialog(mContext, SweetAlertDialog.ERROR_TYPE)
+                                            .setTitleText("Oops...")
+                                            .setContentText("Something went wrong! Please Try Again")
+                                            .show();
+                                }
                                 dialog.dismiss();
                             }
                         }

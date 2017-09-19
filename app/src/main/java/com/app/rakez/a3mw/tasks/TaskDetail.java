@@ -9,16 +9,20 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.app.rakez.a3mw.R;
 import com.app.rakez.a3mw.datastore.AddTaskRecord;
+import com.app.rakez.a3mw.datastore.SubTask;
 import com.app.rakez.a3mw.datastore.TaskRecord;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class TaskDetail extends AppCompatActivity {
 
@@ -42,6 +46,9 @@ public class TaskDetail extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        List<SubTask> subTasks = SubTask.find(SubTask.class,"t_id=?",tId);
+        SubTask subTask = subTasks.get(0);
+        getSupportActionBar().setTitle(subTask.getJob()+"("+subTask.getDiameter()+" X "+subTask.getThickness() +")");
         initialize();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +72,18 @@ public class TaskDetail extends AppCompatActivity {
                             nerc.setError("Required");
                         }else{
                             AddTaskRecord addTaskRecord = new AddTaskRecord(userId,token,tId,fab,erc);
-                            addTaskRecord.save();
+                            long a = addTaskRecord.save();
+                            if(a!=-1){
+                                new SweetAlertDialog(TaskDetail.this, SweetAlertDialog.SUCCESS_TYPE)
+                                        .setTitleText("Success!")
+                                        .setContentText("Data is saved. You can now manually sync!")
+                                        .show();
+                            }else{
+                                new SweetAlertDialog(TaskDetail.this, SweetAlertDialog.ERROR_TYPE)
+                                        .setTitleText("Oops...")
+                                        .setContentText("Something went wrong! Please Try Again")
+                                        .show();
+                            }
                             dialog.dismiss();
                         }
                     }

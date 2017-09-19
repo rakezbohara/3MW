@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.app.rakez.a3mw.R;
+import com.app.rakez.a3mw.datastore.Project;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,9 @@ public class ItemStatus extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        List<Project> projects = Project.find(Project.class,"p_id=?",pId);
+        Project project = projects.get(0);
+        getSupportActionBar().setTitle(project.getProjectName());
         viewPager = (ViewPager) findViewById(R.id.activity_item_status_viewpager);
         setupViewPager(viewPager);
         tabLayout = (TabLayout) findViewById(R.id.activity_item_status_tabs);

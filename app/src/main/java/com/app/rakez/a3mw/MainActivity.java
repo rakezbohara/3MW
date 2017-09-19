@@ -28,6 +28,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.app.rakez.a3mw.admin.AdminProjects;
 import com.app.rakez.a3mw.datastore.Constants;
 import com.app.rakez.a3mw.designer.DeProjects;
 import com.app.rakez.a3mw.projects.Projects;
@@ -148,8 +149,10 @@ public class MainActivity extends AppCompatActivity {
         String position = pref.getString("role", "");
         if(position.equals("design_section") || position.equals("production")){
             doRefresh();
-        }else{
-
+        }else if(position.equals("director")){
+            Intent in = new Intent(MainActivity.this, AdminProjects.class);
+            startActivity(in);
+            finish();
         }
 
     }

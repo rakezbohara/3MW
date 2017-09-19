@@ -29,6 +29,8 @@ import com.app.rakez.a3mw.datastore.StockItemStatusReq;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ItemRequestStatus#newInstance} factory method to
@@ -165,7 +167,20 @@ public class ItemRequestStatus extends Fragment{
                         }else{
                             NewStockRequest newStockRequest = new NewStockRequest(userId,token,item_id,newItem,pId,quantity,prior,note);
                             newStockRequest.save();
+                            long a = newStockRequest.save();
+                            if(a!=-1){
+                                new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
+                                        .setTitleText("Success!")
+                                        .setContentText("Data is saved. You can now manually sync!")
+                                        .show();
+                            }else{
+                                new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                        .setTitleText("Oops...")
+                                        .setContentText("Something went wrong! Please Try Again")
+                                        .show();
+                            }
                         }
+
                         dialog.dismiss();
                         itemNameData.clear();
                         priorityData.clear();

@@ -17,6 +17,8 @@ import com.app.rakez.a3mw.datastore.AddStockOut;
 
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 /**
  * Created by RAKEZ on 7/6/2017.
  */
@@ -71,7 +73,18 @@ public class StockOutAdapter extends RecyclerView.Adapter<StockOutAdapter.MyView
                                 stockOutQty.setError("Quantity Exceeds");
                             }else{
                                 AddStockOut addStockOut = new AddStockOut(userId,token,stockOutItem.getItemId(),pId,qty_used);
-                                addStockOut.save();
+                                long a = addStockOut.save();
+                                if(a!=-1){
+                                    new SweetAlertDialog(mContext, SweetAlertDialog.SUCCESS_TYPE)
+                                            .setTitleText("Success!")
+                                            .setContentText("Data is saved. You can now manually sync!")
+                                            .show();
+                                }else{
+                                    new SweetAlertDialog(mContext, SweetAlertDialog.ERROR_TYPE)
+                                            .setTitleText("Oops...")
+                                            .setContentText("Something went wrong! Please Try Again")
+                                            .show();
+                                }
                                 dialog.dismiss();
                             }
                         }

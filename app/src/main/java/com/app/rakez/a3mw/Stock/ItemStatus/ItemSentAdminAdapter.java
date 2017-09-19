@@ -18,6 +18,8 @@ import com.app.rakez.a3mw.datastore.ItemReceivedSent;
 
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 /**
  * Created by RAKEZ on 7/4/2017.
  */
@@ -83,7 +85,18 @@ public class ItemSentAdminAdapter extends RecyclerView.Adapter<ItemSentAdminAdap
                                 qtyReceived.setError("Required");
                             }else{
                                 ItemReceivedSent itemReceivedSent = new ItemReceivedSent(userId, token, itemSentAdminItem.getItemId(),pId,quantity,itemSentAdminItem.getChallaniNo());
-                                itemReceivedSent.save();
+                                long a = itemReceivedSent.save();
+                                if(a!=-1){
+                                    new SweetAlertDialog(mContext, SweetAlertDialog.SUCCESS_TYPE)
+                                            .setTitleText("Success!")
+                                            .setContentText("Data is saved. You can now manually sync!")
+                                            .show();
+                                }else{
+                                    new SweetAlertDialog(mContext, SweetAlertDialog.ERROR_TYPE)
+                                            .setTitleText("Oops...")
+                                            .setContentText("Something went wrong! Please Try Again")
+                                            .show();
+                                }
                                 dialog.dismiss();
                             }
                         }

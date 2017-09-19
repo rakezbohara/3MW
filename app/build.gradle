@@ -7,8 +7,8 @@ android {
         applicationId "com.app.rakez.a3mw"
         minSdkVersion 17
         targetSdkVersion 25
-        versionCode 3
-        versionName "2.1"
+        versionCode 6
+        versionName "2.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -25,7 +25,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:25.3.1'
@@ -36,4 +35,5 @@ dependencies {
     compile 'com.mcxiaoke.volley:library:1.0.19'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.7'
     testCompile 'junit:junit:4.12'
+    compile 'cn.pedant.sweetalert:library:1.3'
 }
